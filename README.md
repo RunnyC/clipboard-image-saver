@@ -4,7 +4,7 @@
 
 > **Capture. Save. Done.** ⚡
 
-[![macOS](https://img.shields.io/badge/platform-macOS-blue.svg?style=flat-square)](https://developer.apple.com/macos/) [![Swift](https://img.shields.io/badge/language-Swift-orange.svg?style=flat-square)](https://swift.org/) [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](LICENSE) [![Version](https://img.shields.io/badge/version-1.0.2-lightgrey.svg?style=flat-square)](#) [![Terminal](https://img.shields.io/badge/tool-terminal-blueviolet.svg?style=flat-square)](#)
+[![macOS](https://img.shields.io/badge/platform-macOS-blue.svg?style=flat-square)](https://developer.apple.com/macos/) [![Swift](https://img.shields.io/badge/language-Swift-orange.svg?style=flat-square)](https://swift.org/) [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](LICENSE) [![Release](https://img.shields.io/github/v/release/RunnyC/clipboard-image-saver?style=flat-square)](https://github.com/RunnyC/clipboard-image-saver/releases) [![Terminal](https://img.shields.io/badge/tool-terminal-blueviolet.svg?style=flat-square)](#)
 
 A sleek, robust macOS terminal tool that transforms your clipboard into instant PNG files. From screenshots to PDFs, from web images to app content — save everything with a single command.
 
@@ -30,7 +30,6 @@ A sleek, robust macOS terminal tool that transforms your clipboard into instant 
 - Save clipboard images to the **current working directory** by default.
 - Optional **custom folder** via `--folder` flag.
 - Optional **custom filename**.
-- **Built-in help** with `--help` flag.
 - **Multi-page PDF** support: each page is exported as a separate PNG.
 - **Automatic collision handling**: appends `_1`, `_2`, etc., if the file already exists.
 - Human-readable timestamp default: `clipboard_YYYYMMDD_HHMMSS.png`.
