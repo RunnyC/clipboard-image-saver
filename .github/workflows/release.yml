@@ -19,7 +19,7 @@ jobs:
       run: make release
     
     - name: Upload Release Asset
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2
       with:
         files: dist/pasteimage-macos.tar.gz
         body: |
@@ -29,16 +29,18 @@ jobs:
           
           ### 📥 Installation
           ```bash
-          # Download and install
+          # Via Homebrew (recommended)
+          brew install runnyc/tap/pasteimage
+          
+          # Manual installation
           curl -L https://github.com/RunnyC/clipboard-image-saver/releases/latest/download/pasteimage-macos.tar.gz | tar -xz
           sudo mv pasteimage /usr/local/bin/
           ```
           
           ### ✨ What's New
-          - Initial release with full clipboard image support
-          - PDF multi-page export
-          - Collision-safe naming
-          - Terminal-friendly design
+          - Added --help option
+          - Improved Homebrew formula
+          - Better error handling
         draft: false
         prerelease: false
       env:
