@@ -3,6 +3,7 @@
 import AppKit
 import Quartz
 
+let version = "dev"  // This will be replaced by Makefile during build
 let pasteboard = NSPasteboard.general
 let fileManager = FileManager.default
 
@@ -18,6 +19,7 @@ Options:
   filename        Optional output filename (without .png extension)
   --folder path   Save to specified folder (creates folder if needed)
   --help          Show this help message
+  --version       Show version information
 
 Examples:
   pasteimage                    # Save as clipboard_YYYYMMDD_HHMMSS.png
@@ -31,15 +33,25 @@ Exit codes:
     exit(0)
 }
 
+// --- Show version ---
+func showVersion() {
+    print("pasteimage v\(version)")
+    exit(0)
+}
+
 // --- Parse command-line arguments ---
 var outputName: String? = nil
 var customFolder: String? = nil
 
 let args = Array(CommandLine.arguments.dropFirst())
 
-// Check for help first
+// Check for help and version flags first
 if args.contains("--help") || args.contains("-h") {
     showHelp()
+}
+
+if args.contains("--version") || args.contains("-v") {
+    showVersion()
 }
 
 // Parse other arguments

@@ -1,13 +1,18 @@
 # Makefile for pasteimage
 # Build and release automation
 
-.PHONY: build install clean release
+.PHONY: build install clean release help
 
-# Build the executable
+# Get version from git tags, fallback to 0.0.0
+VERSION ?= $(shell git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//' || echo "0.0.0")
+
+# Build the executable with version injection
 build:
-	@echo "🔨 Building pasteimage..."
-	@swiftc pasteimage.swift -o pasteimage -O
-	@echo "✅ Build complete: ./pasteimage"
+	@echo "🔨 Building pasteimage v$(VERSION)..."
+	@sed 's/let version = .*/let version = "$(VERSION)"/' pasteimage.swift > pasteimage_build.swift
+	@swiftc pasteimage_build.swift -o pasteimage -O
+	@rm -f pasteimage_build.swift
+	@echo "✅ Build complete: ./pasteimage (v$(VERSION))"
 
 # Install to /usr/local/bin
 install: build
@@ -19,7 +24,7 @@ install: build
 # Clean build artifacts
 clean:
 	@echo "🧹 Cleaning..."
-	@rm -f pasteimage
+	@rm -f pasteimage pasteimage_build.swift
 	@echo "✅ Clean complete"
 
 # Create release archive
