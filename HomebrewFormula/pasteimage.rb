@@ -12,6 +12,6 @@ class Pasteimage < Formula
   end
 
   test do
-    system "#{bin}/pasteimage", "--help" 2>&1
+    system bin/"pasteimage", "--help"
   end
 end
