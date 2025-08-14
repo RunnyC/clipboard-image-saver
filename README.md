@@ -4,7 +4,7 @@
 
 > **Capture. Save. Done.** ⚡
 
-[![macOS](https://img.shields.io/badge/platform-macOS-blue.svg?style=flat-square)](https://developer.apple.com/macos/) [![Swift](https://img.shields.io/badge/language-Swift-orange.svg?style=flat-square)](https://swift.org/) [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](LICENSE) [![Version](https://img.shields.io/badge/version-1.0.0-lightgrey.svg?style=flat-square)](#) [![Terminal](https://img.shields.io/badge/tool-terminal-blueviolet.svg?style=flat-square)](#)
+[![macOS](https://img.shields.io/badge/platform-macOS-blue.svg?style=flat-square)](https://developer.apple.com/macos/) [![Swift](https://img.shields.io/badge/language-Swift-orange.svg?style=flat-square)](https://swift.org/) [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](LICENSE) [![Version](https://img.shields.io/badge/version-1.0.2-lightgrey.svg?style=flat-square)](#) [![Terminal](https://img.shields.io/badge/tool-terminal-blueviolet.svg?style=flat-square)](#)
 
 A sleek, robust macOS terminal tool that transforms your clipboard into instant PNG files. From screenshots to PDFs, from web images to app content — save everything with a single command.
 
@@ -30,6 +30,7 @@ A sleek, robust macOS terminal tool that transforms your clipboard into instant 
 - Save clipboard images to the **current working directory** by default.
 - Optional **custom folder** via `--folder` flag.
 - Optional **custom filename**.
+- **Built-in help** with `--help` flag.
 - **Multi-page PDF** support: each page is exported as a separate PNG.
 - **Automatic collision handling**: appends `_1`, `_2`, etc., if the file already exists.
 - Human-readable timestamp default: `clipboard_YYYYMMDD_HHMMSS.png`.
@@ -40,7 +41,13 @@ A sleek, robust macOS terminal tool that transforms your clipboard into instant 
 
 ## 🚀 Quick Start
 
-### 📦 Pre-built Binary (Recommended)
+### 🍺 Homebrew (Recommended)
+
+```bash
+brew install runnyc/tap/pasteimage
+```
+
+### 📦 Pre-built Binary
 
 ```bash
 # Download latest release
@@ -48,51 +55,13 @@ curl -L https://github.com/RunnyC/clipboard-image-saver/releases/latest/download
 sudo mv pasteimage /usr/local/bin/
 ```
 
-### 🍺 Homebrew (Coming Soon)
-
-```bash
-brew install RunnyC/clipboard-image-saver/pasteimage
-```
-
-### 🛠️ Manual Build
+### 🛠️ Build from Source
 
 ```bash
 # Clone and build
 git clone https://github.com/RunnyC/clipboard-image-saver.git
 cd clipboard-image-saver
 make install  # Builds and installs to /usr/local/bin
-```
-
-### 📋 Manual Installation
-
-1. Copy `pasteimage.swift` to a folder in your PATH:
-
-```bash
-cp pasteimage.swift ~/bin/pasteimage
-chmod +x ~/bin/pasteimage
-```
-
-2. Ensure the folder is in your PATH:
-
-```bash
-echo $PATH
-# if ~/bin not in PATH, add it
-echo 'export PATH="$HOME/bin:$PATH"' >> ~/.zshrc
-source ~/.zshrc
-```
-
-### Optional: Zsh Alias
-
-You can add a simple alias in ~/.zshrc:
-
-```bash
-alias pasteimage="~/bin/pasteimage"
-```
-
-Then reload Zsh:
-
-```bash
-source ~/.zshrc
 ```
 
 ---
@@ -103,7 +72,7 @@ source ~/.zshrc
 
 ```bash
 pasteimage
-# -> creates clipboard_20250814_134502.PNG
+# -> creates clipboard_20250814_134502.png
 ```
 
 ### Optional custom filename:
@@ -113,6 +82,18 @@ pasteimage my_screenshot
 # -> my_screenshot.png (collision-safe)
 ```
 
+### Custom folder:
+
+```bash
+pasteimage my_screenshot --folder ~/Desktop/images
+```
+
+### Show help:
+
+```bash
+pasteimage --help
+```
+
 ### Multi-page PDF:
 
 ```bash
@@ -120,20 +101,15 @@ pasteimage report.pdf
 # -> report_page1.png, report_page2.png, etc.
 ```
 
-### Custom folder:
-
-```bash
-pasteimage my_screenshot --folder ~/Desktop/images
-```
-
 ---
 
 ## 📋 Pro Tips
 
-- Always saves images as PNG for consistency and safety.
-- Animated GIFs will be saved as static PNG (animation is not preserved).
-- Collision handling ensures no existing file is overwritten.
-- Multi-page PDFs export each page as a separate PNG, also collision-safe.
+- Use `pasteimage --help` anytime to see all options
+- Always saves images as PNG for consistency and safety
+- Animated GIFs will be saved as static PNG (animation is not preserved)
+- Collision handling ensures no existing file is overwritten
+- Multi-page PDFs export each page as a separate PNG, also collision-safe
 
 ---
 

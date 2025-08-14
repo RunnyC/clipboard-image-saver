@@ -6,19 +6,55 @@ import Quartz
 let pasteboard = NSPasteboard.general
 let fileManager = FileManager.default
 
+// --- Show help ---
+func showHelp() {
+    print("""
+📸 pasteimage - Fast clipboard image saving for macOS
+
+Usage:
+  pasteimage [filename] [--folder path]
+
+Options:
+  filename        Optional output filename (without .png extension)
+  --folder path   Save to specified folder (creates folder if needed)
+  --help          Show this help message
+
+Examples:
+  pasteimage                    # Save as clipboard_YYYYMMDD_HHMMSS.png
+  pasteimage screenshot         # Save as screenshot.png
+  pasteimage shot --folder ~/Desktop  # Save to Desktop as shot.png
+
+Exit codes:
+  0 - Success
+  1 - No image data or error occurred
+""")
+    exit(0)
+}
+
 // --- Parse command-line arguments ---
 var outputName: String? = nil
 var customFolder: String? = nil
 
-var args = CommandLine.arguments.dropFirst()
-while let arg = args.first {
-    if arg == "--folder", args.count > 1 {
-        args = args.dropFirst()
-        customFolder = args.first
-    } else if outputName == nil {
+let args = Array(CommandLine.arguments.dropFirst())
+
+// Check for help first
+if args.contains("--help") || args.contains("-h") {
+    showHelp()
+}
+
+// Parse other arguments
+var i = 0
+while i < args.count {
+    let arg = args[i]
+    if arg == "--folder" && i + 1 < args.count {
+        customFolder = args[i + 1]
+        i += 2
+    } else if outputName == nil && !arg.hasPrefix("--") {
         outputName = arg
+        i += 1
+    } else {
+        i += 1
     }
-    args = args.dropFirst()
 }
 
 // --- Determine save folder (cwd by default) ---
