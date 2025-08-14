@@ -1,10 +1,31 @@
-# Clipboard Image Saver (`pasteimage`)
+# 🖼️ Clipboard Image Saver
 
-A simple, robust macOS terminal tool to save images from your clipboard directly to the filesystem. Supports screenshots, copied images from apps, and multi-page PDFs. All images are saved as PNG with human-readable timestamps and collision-safe filenames.
+**`pasteimage`** — *The fastest way to save clipboard images on macOS*
+
+> **Capture. Save. Done.** ⚡
+
+[![macOS](https://img.shields.io/badge/platform-macOS-blue.svg?style=flat-square)](https://developer.apple.com/macos/) [![Swift](https://img.shields.io/badge/language-Swift-orange.svg?style=flat-square)](https://swift.org/) [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](LICENSE) [![Version](https://img.shields.io/badge/version-1.0.0-lightgrey.svg?style=flat-square)](#) [![Terminal](https://img.shields.io/badge/tool-terminal-blueviolet.svg?style=flat-square)](#)
+
+A sleek, robust macOS terminal tool that transforms your clipboard into instant PNG files. From screenshots to PDFs, from web images to app content — save everything with a single command.
+
+**Built for developers, designers, and power users who value speed and simplicity.**
 
 ---
 
-## Features
+## 🌟 Brand Identity
+
+**Clipboard Image Saver** represents the intersection of **efficiency** and **elegance** in developer tooling. Our brand values:
+
+- **⚡ Speed First**: Zero-friction workflow from clipboard to file
+- **🔧 Developer-Friendly**: Terminal-native, scriptable, automation-ready
+- **🎯 Precision**: Pixel-perfect saves with intelligent naming
+- **🛡️ Reliability**: Never lose a clipboard image again
+
+**Tagline**: *"Where clipboard meets filesystem"*
+
+---
+
+## ✨ Features
 
 - Save clipboard images to the **current working directory** by default.
 - Optional **custom folder** via `--folder` flag.
@@ -17,11 +38,34 @@ A simple, robust macOS terminal tool to save images from your clipboard directly
 
 ---
 
-## Installation
+## 🚀 Quick Start
 
-### Manual
+### 📦 Pre-built Binary (Recommended)
 
-1. Copy `pasteimage.swift` to a folder in your PATH (e.g., `~/bin` or `/usr/local/bin`):
+```bash
+# Download latest release
+curl -L https://github.com/RunnyC/clipboard-image-saver/releases/latest/download/pasteimage-macos.tar.gz | tar -xz
+sudo mv pasteimage /usr/local/bin/
+```
+
+### 🍺 Homebrew (Coming Soon)
+
+```bash
+brew install RunnyC/clipboard-image-saver/pasteimage
+```
+
+### 🛠️ Manual Build
+
+```bash
+# Clone and build
+git clone https://github.com/RunnyC/clipboard-image-saver.git
+cd clipboard-image-saver
+make install  # Builds and installs to /usr/local/bin
+```
+
+### 📋 Manual Installation
+
+1. Copy `pasteimage.swift` to a folder in your PATH:
 
 ```bash
 cp pasteimage.swift ~/bin/pasteimage
@@ -53,7 +97,7 @@ source ~/.zshrc
 
 ---
 
-## Usage
+## 🎯 Usage Examples
 
 ### Basic usage (current folder, auto timestamp):
 
@@ -84,7 +128,7 @@ pasteimage my_screenshot --folder ~/Desktop/images
 
 ---
 
-## Note
+## 📋 Pro Tips
 
 - Always saves images as PNG for consistency and safety.
 - Animated GIFs will be saved as static PNG (animation is not preserved).
@@ -93,10 +137,15 @@ pasteimage my_screenshot --folder ~/Desktop/images
 
 ---
 
-## License
+## 🏛️ License & Community
 
-MIT License. Feel free to use, modify, and distribute.
+**MIT License** — Use freely, modify boldly, share generously.
+
+**Clipboard Image Saver** is built with ❤️ for the macOS developer community.
 
 ---
 
-Enjoy quick and reliable clipboard image saving on macOS!
+<p align="center">
+  <strong>Made for developers, by developers</strong><br>
+  <em>Because your clipboard deserves better than manual saving</em>
+</p>

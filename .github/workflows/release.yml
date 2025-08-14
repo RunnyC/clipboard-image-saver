@@ -1,0 +1,45 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: macos-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Build
+      run: make build
+    
+    - name: Create Release Archive
+      run: make release
+    
+    - name: Upload Release Asset
+      uses: softprops/action-gh-release@v1
+      with:
+        files: dist/pasteimage-macos.tar.gz
+        body: |
+          ## 🎉 New Release
+          
+          **Clipboard Image Saver** - Fast clipboard image saving for macOS
+          
+          ### 📥 Installation
+          ```bash
+          # Download and install
+          curl -L https://github.com/RunnyC/clipboard-image-saver/releases/latest/download/pasteimage-macos.tar.gz | tar -xz
+          sudo mv pasteimage /usr/local/bin/
+          ```
+          
+          ### ✨ What's New
+          - Initial release with full clipboard image support
+          - PDF multi-page export
+          - Collision-safe naming
+          - Terminal-friendly design
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
